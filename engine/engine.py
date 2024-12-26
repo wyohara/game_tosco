@@ -26,7 +26,7 @@ class Engine:
         pygame_clock = pygame.time.Clock()
 
         # Instanciando o cubo uma vez fora do loop
-        cubo = Cubo(pygame=pygame, largura_tela=self.SCREEN_WIDTH, altura_tela=self.SCREEN_HEIGHT)
+        cubo = Cubo(pygame=pygame)
         angulo_x, angulo_y, angulo_z = 0.0, 0.0, 0.0
 
         while True:
@@ -40,10 +40,7 @@ class Engine:
             self.screen.fill(self.BACKGROUND_COLOR)
 
             # Desenhando o cubo
-            cubo.desenhar_cubo(self.screen, cubo.rotacionar(angulo_x, angulo_y, angulo_z))
-
-            # Atualizando os ângulos de rotação
-            angulo_x, angulo_y, angulo_z = cubo.atualizar_angulo_rotacao(angulo_x, angulo_y, angulo_z)
+            cubo.controlar_objeto_3d()
 
             # Atualizando a tela
             pygame.display.flip()
